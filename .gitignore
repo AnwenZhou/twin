@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+dist
+digital-dist
+*.local
+.env
+.env.*
+!.env.example
+.turbo
+coverage
+*.log
