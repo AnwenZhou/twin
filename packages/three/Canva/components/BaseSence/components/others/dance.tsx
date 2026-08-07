@@ -8,11 +8,12 @@ import { useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useFBX, useAnimations } from '@react-three/drei';
 import { AnimationMixer } from 'three';
+import { staticUrl } from '../../../../utils/staticUrl';
 
 export default function Man(props) {
   const fbxRef = useRef();
   // Fetch model and a separate texture
-  const fbx = useFBX('/static/models/stacy.fbx');
+  const fbx = useFBX(staticUrl('static/models/stacy.fbx'));
   const setShadow = (obj) => {
     if (obj.children) {
       obj.children.forEach((child) => {

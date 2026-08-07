@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { ThreeElements } from '@react-three/fiber';
-import { useEffect, useMemo } from 'react';
+import { Fragment, useEffect, useMemo } from 'react';
 import { shelfBottomHeight, locationSize, shelfRackDiameter } from './stereoscopicShelf';
 interface IStereoscopicTrack {
   layout: {
@@ -37,7 +37,7 @@ function StereoscopicTrack(props: IStereoscopicTrack) {
       {new Array(layer).fill(1).map((_, index) => {
         const posY = shelfBottomHeight + (locationSize.y + shelfRackDiameter) * index;
         return (
-          <>
+          <Fragment key={`col-track-${index}`}>
             <mesh
               geometry={trackColGeometry}
               material={material}
@@ -48,7 +48,7 @@ function StereoscopicTrack(props: IStereoscopicTrack) {
               material={material}
               position={[locationSize.x / 2 + trackDiameter / 2, posY, 0]}
             ></mesh>
-          </>
+          </Fragment>
         );
       })}
       {new Array(layer).fill(1).map((_, layerIndex) =>
@@ -58,6 +58,7 @@ function StereoscopicTrack(props: IStereoscopicTrack) {
             -lenZ / 2 + (locationSize.z + shelfRackDiameter) * colIndex + trackDiameter / 2;
           return (
             <mesh
+              key={`row-track-${layerIndex}-${colIndex}`}
               geometry={trackRowGeometry}
               material={material}
               position={[0, posY, posZ]}

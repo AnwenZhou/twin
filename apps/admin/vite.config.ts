@@ -18,7 +18,23 @@ export default defineConfig((config) => {
       alias: {
         '@': `${resolve(process.cwd(), 'src')}`,
       },
+      dedupe: ['react', 'react-dom', 'three'],
     },
+    optimizeDeps: {
+      include: [
+        'three',
+        '@react-three/fiber',
+        '@react-three/drei',
+        '@react-three/postprocessing',
+        '@takram/three-atmosphere',
+        '@takram/three-atmosphere/r3f',
+        '@takram/three-clouds',
+        '@takram/three-clouds/r3f',
+        '@takram/three-geospatial',
+        'postprocessing',
+      ],
+    },
+    assetsInclude: ['**/*.exr', '**/*.bin'],
     server: {
       open: true,
       port: 9000,
@@ -31,8 +47,9 @@ export default defineConfig((config) => {
         },
       },
     },
-    // base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
-    base: `/degital-twin-3d/`,
+    // Dev serves public/ at site root so /static/* works.
+    // Production keeps the historical GitHub Pages base path.
+    base: config.mode === 'development' ? '/' : `/degital-twin-3d/`,
     build: {
       outDir: `../../${baseUrl}`,
     },

@@ -3,6 +3,7 @@ import { useLoader } from '@react-three/fiber';
 import { forwardRef, useMemo } from 'react';
 import * as THREE from 'three';
 import Goods from './goods';
+import { staticUrl } from '../../../utils/staticUrl';
 
 interface IMxwCar {
   hasGoods?: boolean;
@@ -12,12 +13,7 @@ interface IMxwCar {
 
 const MxwCar = forwardRef<THREE.Group, IMxwCar>((props, ref) => {
   const { hasGoods, position, radian } = props;
-  const fbx = useLoader(
-    FBXLoader,
-    process.env.NODE_ENV == 'development'
-      ? '/static/models/maixiaowei-1.FBX'
-      : `/degital-twin-3d/static/models/maixiaowei-1.FBX`
-  );
+  const fbx = useLoader(FBXLoader, staticUrl('static/models/maixiaowei-1.FBX'));
   const carModel = useMemo(() => {
     const model = fbx.clone();
     model.scale.set(0.05, 0.05, 0.05);

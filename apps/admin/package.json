@@ -10,19 +10,27 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "@takram/three-atmosphere": "^0.19.1",
+    "@takram/three-clouds": "^0.7.6",
+    "@takram/three-geospatial": "^0.9.1",
+    "postprocessing": "^6.39.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.175.0",
     "threejs": "workspace:^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.16.16",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "@vitejs/plugin-react": "^2.2.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.3",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
     "vite-plugin-compression": "^0.5.1"
   }
 }

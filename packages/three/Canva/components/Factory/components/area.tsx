@@ -27,9 +27,7 @@ const Area: React.FC<IAreaProps> = ({
   const [hovered, setHover] = useState(false);
   const [clicked, setClicked] = useState(false);
   const meshRef = useRef<THREE.Mesh>(null);
-  const { controls } = useThree((state) => ({
-    controls: state.controls as unknown as CameraControls,
-  }));
+  const controls = useThree((state) => state.controls) as CameraControls | null;
 
   // 转换为x轴和z轴组成的坐标系中的位置
   const position: THREE.Vector3 = new THREE.Vector3(x + width / 2, Y, y + height / 2);
@@ -40,10 +38,10 @@ const Area: React.FC<IAreaProps> = ({
   const handleClick = () => {
     if (clicked) return;
     setClicked(true);
-    // controls.fitToBox(meshRef.current!, true);
-    const mesh = meshRef.current!;
-    const { x, y, z } = mesh.position;
+    const mesh = meshRef.current;
+    if (!mesh || !controls || typeof controls.fitToBox !== 'function') return;
 
+    const { x, y, z } = mesh.position;
     const box = new THREE.Box3().setFromCenterAndSize(
       new THREE.Vector3(x, (y + textHeight!) / 2, z),
       new THREE.Vector3(width, textHeight, height)

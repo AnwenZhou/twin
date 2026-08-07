@@ -1,5 +1,7 @@
 import { Canvas as FiberCanvas } from '@react-three/fiber';
-import React from 'react';
+import React, { Suspense } from 'react';
+import { NoToneMapping } from 'three';
+import AtmosphereEnv from './components/AtmosphereEnv';
 import BaseSence from './components/BaseSence';
 import Factory from './components/Factory';
 import Gizmo from './components/Help';
@@ -13,15 +15,21 @@ const Canva = (props) => {
         shadows
         gl={{
           logarithmicDepthBuffer: true,
+          antialias: true,
+          toneMapping: NoToneMapping,
+          // AGX path expects moderate exposure; 10 was blowing out to white
+          toneMappingExposure: 4.5,
         }}
       >
-        {/* 场景类 */}
-        <BaseSence />
-        {/* 工厂类 */}
-        <Factory />
-        {props.children}
-        {/* 帮助类 */}
-        <Gizmo />
+        <AtmosphereEnv>
+          {/* Camera / lights / buildings first — don't block on heavy GLTF/FBX */}
+          <BaseSence />
+          <Suspense fallback={null}>
+            <Factory />
+          </Suspense>
+          {props.children}
+          <Gizmo />
+        </AtmosphereEnv>
       </FiberCanvas>
     </ThreeStoreProvider>
   );

@@ -3,6 +3,7 @@ import { useLoader } from '@react-three/fiber';
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import Goods from './goods';
+import { staticUrl } from '../../../utils/staticUrl';
 
 interface IConveyerBelt {
   hasGoods?: boolean;
@@ -13,12 +14,7 @@ const width = 315;
 const ConveyerBelt = forwardRef<THREE.Group, IConveyerBelt>((props, ref) => {
   const { hasGoods, position, goodsPosition } = props;
   const goodsRef = useRef<THREE.Group>(null);
-  const fbx = useLoader(
-    FBXLoader,
-    process.env.NODE_ENV == 'development'
-      ? '/static/models/GTX.FBX'
-      : `/degital-twin-3d/static/models/GTX.FBX`
-  );
+  const fbx = useLoader(FBXLoader, staticUrl('static/models/GTX.FBX'));
   const model = useMemo(() => {
     const belt = fbx.clone();
     belt.scale.set(0.08, 0.05, 0.08);

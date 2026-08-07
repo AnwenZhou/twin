@@ -3,6 +3,7 @@ import { useLoader } from '@react-three/fiber';
 import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import Goods from './goods';
+import { staticUrl } from '../../../utils/staticUrl';
 
 export interface ForkTruckRef {
   root: THREE.Group | null;
@@ -20,24 +21,9 @@ interface IFourWayCar {
 
 const ForkTruck = forwardRef<ForkTruckRef, IFourWayCar>((props, ref) => {
   const { hasGoods, position, liftArmHeight = 0, forkArmHeight = 0, radian = 0 } = props;
-  const forkFbx = useLoader(
-    FBXLoader,
-    process.env.NODE_ENV == 'development'
-      ? '/static/models/SE-1.FBX'
-      : `/degital-twin-3d/static/models/SE-1.FBX`
-  );
-  const liftFbx = useLoader(
-    FBXLoader,
-    process.env.NODE_ENV == 'development'
-      ? '/static/models/SE-2.FBX'
-      : `/degital-twin-3d/static/models/SE-2.FBX`
-  );
-  const bodyFbx = useLoader(
-    FBXLoader,
-    process.env.NODE_ENV == 'development'
-      ? '/static/models/SE-3.FBX'
-      : `/degital-twin-3d/static/models/SE-3.FBX`
-  );
+  const forkFbx = useLoader(FBXLoader, staticUrl('static/models/SE-1.FBX'));
+  const liftFbx = useLoader(FBXLoader, staticUrl('static/models/SE-2.FBX'));
+  const bodyFbx = useLoader(FBXLoader, staticUrl('static/models/SE-3.FBX'));
   const rootRef = useRef<THREE.Group>(null);
   const liftArmRef = useRef<THREE.Group>(null);
   const forkArmRef = useRef<THREE.Group>(null);

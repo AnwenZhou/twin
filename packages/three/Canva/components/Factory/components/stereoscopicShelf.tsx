@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { ThreeElements } from '@react-three/fiber';
-import { useMemo, useEffect } from 'react';
+import { Fragment, useMemo, useEffect } from 'react';
 
 const { Vector3 } = THREE;
 
@@ -69,6 +69,7 @@ function StereoscopicShelf(props: IStereoscopicShelf) {
           );
           return (
             <mesh
+              key={`row-${rowIndex}-${layerIndex}`}
               geometry={rowShelfRackGeometry}
               material={shelfRackMaterial}
               position={pos}
@@ -86,6 +87,7 @@ function StereoscopicShelf(props: IStereoscopicShelf) {
           );
           return (
             <mesh
+              key={`col-${rowIndex}-${colIndex}`}
               geometry={colShelfRackGeometry}
               material={shelfRackMaterial}
               position={pos}
@@ -101,20 +103,20 @@ function StereoscopicShelf(props: IStereoscopicShelf) {
           const topPos = new Vector3(
             0,
             shelfBottomHeight +
-            layerIndex * (locationSize.y + shelfRackDiameter) +
-            shelfTrackBottomDiameter +
-            shelfTrackTopDiameter,
+              layerIndex * (locationSize.y + shelfRackDiameter) +
+              shelfTrackBottomDiameter +
+              shelfTrackTopDiameter,
             posZ
           );
           const bottomPos = new Vector3(
             0,
             shelfBottomHeight +
-            layerIndex * (locationSize.y + shelfRackDiameter) +
-            shelfTrackBottomDiameter,
+              layerIndex * (locationSize.y + shelfRackDiameter) +
+              shelfTrackBottomDiameter,
             posZ
           );
           return (
-            <>
+            <Fragment key={`track-${colIndex}-${layerIndex}`}>
               <mesh
                 geometry={shelfTrackTopGeometry}
                 material={shelfTrackMaterial}
@@ -125,7 +127,7 @@ function StereoscopicShelf(props: IStereoscopicShelf) {
                 material={shelfTrackMaterial}
                 position={bottomPos}
               ></mesh>
-            </>
+            </Fragment>
           );
         })
       )}

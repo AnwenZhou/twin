@@ -12,29 +12,33 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@jiaminghi/data-view-react": "^1.2.5",
-    "@react-spring/three": "^9.7.2",
-    "@react-three/csg": "^2.2.0",
-    "@react-three/drei": "^9.70.3",
-    "@react-three/fiber": "^8.13.0",
-    "@react-three/postprocessing": "^2.14.8",
-    "@react-three/rapier": "^1.0.1",
+    "@react-spring/three": "^10.1.2",
+    "@react-three/csg": "^4.0.0",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "@react-three/rapier": "^2.2.0",
+    "@takram/three-atmosphere": "^0.19.1",
+    "@takram/three-clouds": "^0.7.6",
+    "@takram/three-geospatial": "^0.9.1",
     "leva": "^0.9.34",
     "mobx": "^6.6.1",
-    "mobx-react-lite": "^3.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "three": "^0.153.0"
+    "mobx-react-lite": "^4.1.1",
+    "postprocessing": "^6.39.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.175.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
     "less": "^4.1.3",
     "tsconfig": "workspace:*",
-    "typescript": "^4.9.4"
+    "typescript": "^5.7.0"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^19.0.0"
   }
 }

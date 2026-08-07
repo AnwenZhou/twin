@@ -9,3 +9,4 @@ digital-dist
 .turbo
 coverage
 *.log
+.pnpm-store

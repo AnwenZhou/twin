@@ -9,6 +9,11 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D数字孪生</title>
+    <!-- Preload atmosphere LUTs so sun/sky lighting comes up sooner -->
+    <link rel="preload" as="fetch" crossorigin href="%BASE_URL%static/atmosphere/transmittance.exr" />
+    <link rel="preload" as="fetch" crossorigin href="%BASE_URL%static/atmosphere/irradiance.exr" />
+    <link rel="preload" as="fetch" crossorigin href="%BASE_URL%static/atmosphere/scattering.exr" />
+    <link rel="preload" as="fetch" crossorigin href="%BASE_URL%static/atmosphere/higher_order_scattering.exr" />
   </head>
   <body>
     <div id="root"></div>

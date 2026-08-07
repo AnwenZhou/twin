@@ -21,7 +21,7 @@ const Camera = (props: any) => {
           lookVertical={true}
         ></FirstPersonControls>
         {/* <OrbitControls /> */}
-        <MapControls zoomSpeed={0.1} />
+        <MapControls zoomSpeed={0.04} />
       </group>
     );
   };
@@ -31,7 +31,7 @@ const Camera = (props: any) => {
       <group>
         {/* 相机控制器 */}
         {/* <PresentationControls /> */}
-        <CameraControls />
+        <CameraControls makeDefault dollySpeed={0.35} />
         {/* <PointerCtrl /> */}
       </group>
     );
