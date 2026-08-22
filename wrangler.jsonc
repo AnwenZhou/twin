@@ -2,5 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "twin",
   "compatibility_date": "2025-08-22",
+  // CI 仍在跑 `wrangler deploy`（非 pages deploy），必须提供 assets
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  // Pages 构建面板读取此字段作为输出目录
   "pages_build_output_dir": "dist"
 }
