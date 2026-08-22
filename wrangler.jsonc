@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "degital-twin-3d",
+  "name": "twin",
   "compatibility_date": "2025-08-22",
   "assets": {
     "directory": "./dist",
