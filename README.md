@@ -90,7 +90,7 @@ pnpm dev
 
 ```bash
 pnpm build    # 产出目录 dist/
-pnpm deploy   # 构建并部署到 Cloudflare Workers
+pnpm deploy   # 构建并用 wrangler pages deploy 发布
 
 pnpm preview  # 预览生产构建
 ```
