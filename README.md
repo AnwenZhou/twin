@@ -91,7 +91,7 @@ pnpm dev
 本地默认地址：<http://localhost:9000>
 
 ```bash
-pnpm build    # 产出目录 digital-dist/
+pnpm build    # 产出目录 dist/
 pnpm preview  # 预览生产构建
 ```
 

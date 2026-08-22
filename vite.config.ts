@@ -3,8 +3,6 @@ import { defineConfig } from 'vite';
 import vitePluginCompression from 'vite-plugin-compression';
 import { resolve } from 'path';
 
-const baseUrl = 'digital-dist';
-
 export default defineConfig((config) => {
   return {
     plugins: [
@@ -50,7 +48,21 @@ export default defineConfig((config) => {
     // Production keeps the historical GitHub Pages base path.
     base: config.mode === 'development' ? '/' : `/degital-twin-3d/`,
     build: {
-      outDir: baseUrl,
+      outDir: 'dist',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            three: ['three'],
+            r3f: ['@react-three/fiber', '@react-three/drei'],
+            post: ['postprocessing', '@react-three/postprocessing'],
+            atmosphere: [
+              '@takram/three-atmosphere',
+              '@takram/three-clouds',
+              '@takram/three-geospatial',
+            ],
+          },
+        },
+      },
     },
   };
 });

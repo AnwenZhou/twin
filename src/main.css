@@ -46,3 +46,14 @@ textarea {
   height: 100%;
   display: block;
 }
+
+.digital-twin-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
