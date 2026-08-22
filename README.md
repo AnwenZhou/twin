@@ -92,6 +92,8 @@ pnpm dev
 
 ```bash
 pnpm build    # 产出目录 dist/
+pnpm deploy   # 构建并部署到 Cloudflare Workers
+
 pnpm preview  # 预览生产构建
 ```
 
